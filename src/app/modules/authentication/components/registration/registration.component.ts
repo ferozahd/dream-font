@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { RegistrationValidatorService } from '../../services/registration-validator-service.service';
 
@@ -73,4 +73,16 @@ export class RegistrationComponent {
       this.registrationForm.markAllAsTouched();
     }
   }
+
+  @Input() showModal = false;
+  @Output() close = new EventEmitter<void>();
+
+  closeModal() {
+    this.close.emit();
+  }
+
+  openModal() {
+    this.showModal = true;
+  }
+ 
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 @Component({
@@ -8,12 +8,11 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+  private readonly fb =inject(FormBuilder);
+  private readonly router =inject(Router);
   loginForm: FormGroup;
 
-  constructor(
-    private fb: FormBuilder, 
-    private router: Router
-  ) {
+  constructor() {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -33,7 +32,6 @@ export class LoginComponent {
   }
 
   onRegister() {
-    // Implement registration logic or navigation
-    console.log('Register clicked');
+   this.router.navigate(["login/registration"])
   }
 }
