@@ -1,0 +1,247 @@
+/* Improved General Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* More modern font */
+    background-color: #f3f6f9; /* Light, softer background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Use min-height for better responsiveness */
+    margin: 0;
+    padding: 20px; /* Add some padding around the body */
+  }
+  
+  .registration-container {
+    background-color: #fff;
+    padding: 40px; /* More generous padding */
+    border-radius: 12px; /* More rounded corners */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Softer, wider shadow */
+    width: 90%; /* Take up more width on larger screens */
+    /* max-width: 700px; Remove the maximum width */
+  }
+  
+  .registration-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* More responsive columns */
+    gap: 20px; /* Increased gap for better spacing */
+    grid-template-areas:
+      "toggle toggle"
+      "nid nid"
+      "guardianName guardianNid"
+      "guardianRelationship guardianRelationship"
+      "name name"
+      "dob dob"
+      "religion religion"
+      "address address"
+      "city city"
+      "post postcode"
+      "phone email"
+      "weight height"
+      "bp maritalStatus"
+      "brothers sisters"
+      "father mother"
+      "submit submit";
+  }
+  
+  .toggle-container {
+    grid-column: span 2;
+    font-size: 16px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  
+    input[type="checkbox"] {
+      appearance: none;
+      width: 40px;
+      height: 20px;
+      background-color: #ddd;
+      border-radius: 10px;
+      position: relative;
+      cursor: pointer;
+      outline: none;
+  
+      &::before {
+        content: '';
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        background-color: #fff;
+        border-radius: 50%;
+        top: 1px;
+        left: 1px;
+        transition: transform 0.3s ease-in-out;
+      }
+  
+      &:checked {
+        background-color: #007bff;
+  
+        &::before {
+          transform: translateX(20px);
+        }
+      }
+    }
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: 500; /* Slightly lighter bold */
+    margin-bottom: 8px;
+    color: #333; /* Darker text for better readability */
+  }
+  
+  .form-group input[type="text"],
+  .form-group input[type="number"],
+  .form-group input[type="date"],
+  .form-group input[type="tel"],
+  .form-group input[type="email"],
+  .form-group select {
+    width: 100%;
+    padding: 12px; /* Increased padding */
+    margin-bottom: 15px; /* Increased margin */
+    border: 1px solid #ddd; /* Lighter border */
+    border-radius: 6px; /* More rounded input fields */
+    font-size: 16px;
+    color: #555;
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+  
+    &:focus {
+      outline: none;
+      border-color: #007bff; /* Highlight on focus */
+      box-shadow: 0 0 6px rgba(0, 123, 255, 0.2); /* Subtle focus shadow */
+    }
+  }
+  
+  .form-group select {
+    appearance: none; /* Remove default arrow */
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg fill="%23555" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 30px; /* Make space for the custom arrow */
+  }
+  
+  .radio-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+  
+    label {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: normal;
+  
+      input[type="radio"] {
+        appearance: none;
+        width: 16px;
+        height: 16px;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        outline: none;
+        cursor: pointer;
+  
+        &:checked {
+          border: 4px solid #007bff;
+        }
+      }
+    }
+  }
+  
+  button.submit-btn {
+    grid-column: span 2;
+    padding: 14px 20px; /* Increased padding */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px; /* More rounded button */
+    cursor: pointer;
+    font-size: 18px; /* Slightly larger font */
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+  
+    &:hover {
+      background-color: #0056b3;
+    }
+  
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Focus shadow for accessibility */
+    }
+  }
+  
+  .guardian-form {
+    grid-column: span 2;
+    padding: 15px 0;
+    border-top: 1px solid #eee;
+    margin-top: 20px;
+  
+    & > .form-group {
+      grid-column: span 2; /* Ensure child form-groups take full width */
+    }
+  
+    & > .radio-group {
+      grid-column: span 2;
+    }
+  
+    @media screen and (min-width: 768px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+  
+      & > .form-group:last-child,
+      & > .radio-group {
+        grid-column: span 2;
+      }
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media screen and (max-width: 600px) {
+    .registration-form {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "toggle"
+        "nid"
+        "guardianName"
+        "guardianNid"
+        "guardianRelationship"
+        "name"
+        "dob"
+        "religion"
+        "address"
+        "city"
+        "post"
+        "postcode"
+        "phone"
+        "email"
+        "weight"
+        "height"
+        "bp"
+        "maritalStatus"
+        "brothers"
+        "sisters"
+        "father"
+        "mother"
+        "submit";
+    }
+  
+    .toggle-container {
+      grid-column: auto;
+    }
+  
+    button.submit-btn {
+      grid-column: auto;
+    }
+  
+    .guardian-form {
+      grid-template-columns: 1fr;
+  
+      & > .form-group {
+        grid-column: auto;
+      }
+  
+      & > .radio-group {
+        grid-column: auto;
+      }
+    }
+  }
