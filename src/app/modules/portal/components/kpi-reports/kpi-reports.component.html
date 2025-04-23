@@ -1,0 +1,18 @@
+<div class="container py-4">
+    <div class="row g-3">
+      @for (kpi of kpis; track kpi.title) {
+        <div class="col-md-4">
+          <div class="card shadow-sm h-100 border-0">
+            <div class="card-body">
+              <h6 class="card-subtitle text-muted">{{ kpi.title }}</h6>
+              <h2 class="card-title text-primary mt-2">{{ kpi.value }}</h2>
+              @if (kpi.unit) {
+                <small class="text-muted">{{ kpi.unit }}</small>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+  

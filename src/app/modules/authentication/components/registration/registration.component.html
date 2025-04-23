@@ -1,152 +1,144 @@
-<div class="registration-container">
-    <form class="registration-form" (submit)="onSubmit()">
-    
-      <!-- Main NID or Guardian Toggle -->
-      <label class="toggle-container">
-        <input type="checkbox" (change)="toggleGuardianNID()" />
-        Verify by Guardian NID
-      </label>
-    
-      <div *ngIf="!useGuardian" class="form-group">
-        <label for="nid">NID</label>
-        <input type="number" id="nid" name="nid" required />
-      </div>
-    
-      <div *ngIf="useGuardian" class="guardian-form">
-        <div class="form-group">
-          <label for="guardianName">Guardian Name</label>
-          <input type="text" id="guardianName" name="guardianName" required />
-        </div>
-  
-        <div class="form-group">
-          <label for="guardianNid">Guardian NID</label>
-          <input type="number" id="guardianNid" name="guardianNid" required />
-        </div>
-  
-        <div class="form-group">
-          <label>Relationship</label>
-          <div class="radio-group">
-            <label *ngFor="let r of relationships">
-              <input type="radio" name="relationship" [value]="r" /> {{ r }}
-            </label>
-          </div>
-        </div>
-      </div>
-  
-      <!-- User Info -->
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" required />
-      </div>
-  
-      <div class="form-group">
-        <label for="dob">Date of Birth</label>
-        <input type="date" id="dob" name="dob" required />
-      </div>
-  
-      <!-- Religion -->
-      <div class="form-group">
-        <label for="religion">Religion (Optional)</label>
-        <select id="religion" name="religion">
-          <option *ngFor="let r of religions" [value]="r">{{ r }}</option>
-        </select>
-      </div>
-  
-      <!-- Address Info -->
-      <div class="form-group">
-        <label for="address">Address</label>
-        <input type="text" id="address" name="address" required />
-      </div>
-  
-      <div class="form-group">
-        <label for="city">City</label>
-        <input type="text" id="city" name="city" required />
-      </div>
-  
-      <div class="form-group">
-        <label for="post">Post</label>
-        <input type="text" id="post" name="post" required />
-      </div>
-  
-      <div class="form-group">
-        <label for="postcode">Post Code</label>
-        <input type="text" id="postcode" name="postcode" maxlength="5" required />
-      </div>
-  
-      <div class="form-group">
-        <label for="phone">Phone</label>
-        <input type="tel" id="phone" name="phone" required />
-      </div>
-  
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required />
-      </div>
-  
-      <div class="form-group">
-        <label for="weight">Weight</label>
-        <input type="number" id="weight" name="weight" required />
-      </div>
-  
-      <div class="form-group">
-        <label for="height">Height</label>
-        <input type="number" id="height" name="height" required />
-      </div>
-  
-      <div class="form-group">
-        <label for="bp">Blood Pressure</label>
-        <input type="text" id="bp" name="bp" placeholder="e.g. 80/120" />
-      </div>
-  
-      <div class="form-group">
-        <label for="maritalStatus">Marital Status</label>
-        <select id="maritalStatus" name="maritalStatus" required>
-          <option *ngFor="let m of maritalStatuses" [value]="m">{{ m }}</option>
-        </select>
-      </div>
-  
-      <div class="form-group">
-        <label for="brothers">Brothers</label>
-        <input type="number" id="brothers" name="brothers" required />
-      </div>
-  
-      <div class="form-group">
-        <label for="sisters">Sisters</label>
-        <input type="number" id="sisters" name="sisters" required />
-      </div>
-  
-      <div class="form-group">
-        <label for="father">Father's Name</label>
-        <input type="text" id="father" name="father" required />
-      </div>
-  
-      <div class="form-group">
-        <label for="mother">Mother's Name</label>
-        <input type="text" id="mother" name="mother" required />
-      </div>
-  
-      <button type="submit" class="submit-btn">Submit</button>
-      <button type="button" (click)="openModal()" class="btn btn-danger">Danger</button>
+<div class="container my-5 pb-4">
+  <form (submit)="onSubmit()" class="needs-validation" novalidate>
+    <h3 class="mb-4">Registration Form</h3>
 
-    </form>
-  </div>
-  
+    <!-- Toggle Guardian -->
+    <div class="form-check form-switch mb-4">
+      <input class="form-check-input" type="checkbox" id="guardianToggle" (change)="toggleGuardianNID()" />
+      <label class="form-check-label" for="guardianToggle">Verify by Guardian NID</label>
+    </div>
 
-  <div class="modal fade" tabindex="-1" [ngClass]="{'show': showModal}" style="display: block;" *ngIf="showModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Modal Title</h5>
-          <button type="button" class="btn-close" (click)="closeModal()"></button>
-        </div>
-        <div class="modal-body">
-          <p>Content of the modal goes here.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+    <!-- Main NID -->
+    <div *ngIf="!useGuardian" class="mb-3">
+      <label for="nid" class="form-label">NID</label>
+      <input type="number" class="form-control" id="nid" name="nid" required />
+    </div>
+
+    <!-- Guardian Info -->
+    <div *ngIf="useGuardian" class="border p-3 rounded bg-light mb-4">
+      <h5>Guardian Info</h5>
+      <div class="mb-3">
+        <label for="guardianName" class="form-label">Guardian Name</label>
+        <input type="text" class="form-control" id="guardianName" name="guardianName" required />
+      </div>
+
+      <div class="mb-3">
+        <label for="guardianNid" class="form-label">Guardian NID</label>
+        <input type="number" class="form-control" id="guardianNid" name="guardianNid" required />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Relationship</label>
+        <div class="form-check" *ngFor="let r of relationships">
+          <input class="form-check-input" type="radio" name="relationship" [value]="r" />
+          <label class="form-check-label">{{ r }}</label>
         </div>
       </div>
     </div>
-  </div>
-  
+
+    <!-- User Info -->
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name" required />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="dob" class="form-label">Date of Birth</label>
+        <input type="date" class="form-control" id="dob" name="dob" required />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="religion" class="form-label">Religion (Optional)</label>
+        <select class="form-select" id="religion" name="religion">
+          <option *ngFor="let r of religions" [value]="r">{{ r }}</option>
+        </select>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="maritalStatus" class="form-label">Marital Status</label>
+        <select class="form-select" id="maritalStatus" name="maritalStatus" required>
+          <option *ngFor="let m of maritalStatuses" [value]="m">{{ m }}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Address Info -->
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="address" class="form-label">Address</label>
+        <input type="text" class="form-control" id="address" name="address" required />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="city" class="form-label">City</label>
+        <input type="text" class="form-control" id="city" name="city" required />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="post" class="form-label">Post</label>
+        <input type="text" class="form-control" id="post" name="post" required />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="postcode" class="form-label">Post Code</label>
+        <input type="text" class="form-control" id="postcode" name="postcode" maxlength="5" required />
+      </div>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="phone" class="form-label">Phone</label>
+        <input type="tel" class="form-control" id="phone" name="phone" required />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" required />
+      </div>
+    </div>
+
+    <!-- Physical Info -->
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <label for="weight" class="form-label">Weight (kg)</label>
+        <input type="number" class="form-control" id="weight" name="weight" required />
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label for="height" class="form-label">Height (cm)</label>
+        <input type="number" class="form-control" id="height" name="height" required />
+      </div>
+
+
+    </div>
+
+    <!-- Family Info -->
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="brothers" class="form-label">Brothers</label>
+        <input type="number" class="form-control" id="brothers" name="brothers" required />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="sisters" class="form-label">Sisters</label>
+        <input type="number" class="form-control" id="sisters" name="sisters" required />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="father" class="form-label">Father's Name</label>
+        <input type="text" class="form-control" id="father" name="father" required />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="mother" class="form-label">Mother's Name</label>
+        <input type="text" class="form-control" id="mother" name="mother" required />
+      </div>
+    </div>
+
+    <div class="d-flex align-items-end flex-column mb-3">
+      <button type="submit" class="btn btn-primary  ">Submit</button>
+    </div>
+  </form>
+</div>

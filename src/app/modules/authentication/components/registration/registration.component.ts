@@ -1,6 +1,7 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { RegistrationValidatorService } from '../../services/registration-validator-service.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-registration',
@@ -12,7 +13,7 @@ export class RegistrationComponent {
   useGuardian = false;
   private fb = inject(FormBuilder);
   private validators = inject(RegistrationValidatorService);
-
+  private modalService =inject(NgbModal);
   readonly relationships = ['Father', 'Mother'];
   readonly religions = ['Islam', 'Hindu', 'Buddhist', 'Christian'];
   readonly maritalStatuses = ['Married', 'Unmarried', 'Divorce', 'In a relationship'];
@@ -35,7 +36,6 @@ export class RegistrationComponent {
     postcode: ['', [Validators.required, this.validators.postalCodeValidator()]],
     weight: ['', [Validators.required, Validators.max(1000)]],
     height: ['', [Validators.required, Validators.max(300)]],
-    bp: ['', [Validators.required, this.validators.bpValidator()]],
     maritalStatus: ['', Validators.required],
     brothers: ['', [Validators.required, Validators.max(100)]],
     sisters: ['', [Validators.required, Validators.max(100)]],
@@ -81,8 +81,8 @@ export class RegistrationComponent {
     this.close.emit();
   }
 
-  openModal() {
-    this.showModal = true;
+  openModal(content: any ) {
+    this.modalService.open(content, { size: 'lg', backdrop: 'static' });
   }
  
 }

@@ -5,6 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RegistrationComponent } from './components/registration/registration.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 export const authenticationRoutes: Routes = [
@@ -29,7 +31,7 @@ export class AuthenticationRoutingModule { }
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(authenticationRoutes), // Import the routing module
-
+    NgbModule
   ],
   // exports: [LoginComponent], // Export LoginComponent if other modules need to use it
   // providers: [AuthenticationService], //Removed providedIn: 'root'

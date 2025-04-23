@@ -23,15 +23,12 @@ export class LoginComponent {
   onLogin() {
     const { username, password } = this.loginForm.value;
 
-    // Simulate authentication
-    if (username === 'admin' && password === 'admin') {
-      this.router.navigate(['/dashboard']);
-    } else {
-     
-    }
+ 
+      this.router.navigate(['/']);
+    
   }
 
   onRegister() {
-   this.router.navigate(["login/registration"])
+   this.router.navigate(["authentication/registration"])
   }
 }
