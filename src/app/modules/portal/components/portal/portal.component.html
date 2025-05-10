@@ -1,23 +1,24 @@
-<div class="d-flex">
-    <!-- Sidebar -->
-    <div class="sidebar bg-light border-end" [class.sidebar-collapsed]="!sidebarOpen">
-     <app-sidebar-menu></app-sidebar-menu>
-    </div>
-  
-    <!-- Page Content -->
-    <div class="flex-grow-1">
-      <!-- Top Navbar -->
-      <nav class="navbar navbar-light bg-white  px-3">
-        <button class="btn btn-outline-primary d-md-none" (click)="toggleSidebar()">
-          <i class="bi bi-list"></i>
-        </button>
-        <span class="ms-2">Doctor Lib</span>
-      </nav>
-  
-      <!-- Main Content -->
-      <div class="p-4">
-       <router-outlet></router-outlet>
-      </div>
+<div class="d-flex vh-100 overflow-hidden">
+  <!-- Sidebar -->
+  <div class="sidebar bg-light border-end" [class.sidebar-collapsed]="!sidebarOpen">
+    <div class="h-100 overflow-auto">
+      <app-sidebar-menu></app-sidebar-menu>
     </div>
   </div>
-  
+
+  <!-- Main Content -->
+  <div class="flex-grow-1 d-flex flex-column">
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-light bg-white px-3">
+      <button class="btn btn-outline-primary d-md-none" (click)="toggleSidebar()">
+        <i class="bi bi-list"></i>
+      </button>
+      <span class="ms-2">Doctor Lib</span>
+    </nav>
+
+    <!-- Main Page Scrollable Area -->
+    <div class="main-content-wrapper flex-grow-1 overflow-auto p-4">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

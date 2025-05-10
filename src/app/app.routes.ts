@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 export const routes: Routes = [
+
     {
         path: 'authentication',
         loadChildren: () =>
@@ -8,10 +9,11 @@ export const routes: Routes = [
           ),
       },
       {
-        path:'',
+        path:'dr',
         loadChildren:()=> 
           import('./modules/portal/portal.module').then(
             (m) => m.PortalModule
           ),
-      }
+      },
+     
 ];
