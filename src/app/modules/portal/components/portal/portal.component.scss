@@ -1,15 +1,9 @@
-.sidebar {
-  width: 250px;
-  transition: width 0.3s ease, opacity 0.3s ease;
-  background-color: #f8f9fa;
+.collapse {
+    margin-bottom: 5px;
+    .active{
+    border: solid #fff 1px;
+    border-radius: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
 }
-
-.sidebar-collapsed {
-  width: 0;
-  opacity: 0;
-  overflow: hidden;
-}
-
-.main-content-wrapper {
-  min-height: 0; /* required for flex-grow with overflow */
 }

@@ -1,0 +1,49 @@
+<div class="appoitment">
+    
+    <div class="w-full  d-flex justify-content-sm-between">
+        <h4>Appoitment</h4>
+        <h4>Patient List (Total: {{ patientCount() }})</h4>
+        <ul class="d-flex appoitment-filter-btn">
+            <div (click)="change_filter_status('PENDING')" [className]="status()==='PENDING'?'active':''">Pending</div>
+            <div (click)="change_filter_status('ACTIVE')" [className]="status()==='ACTIVE'?'active':''">Active</div>
+            <div (click)="change_filter_status('ALL')" [className]="status()==='ALL'?'active':''">ALL</div>
+        </ul>
+    </div>
+
+    <div>
+        <div class="patient-list-container">
+           
+            <table class="patient-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <td>Address</td>
+                  <th>Age</th>
+                  <th>Gender</th>
+                  <th>Status</th>
+                  <th>Date of Admission</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Use patients() to reactively render the list -->
+                @for (patient of patients(); track patient.id) {
+                <tr >
+                  <td>{{ patient.id }}</td>
+                  <td>{{ patient.name }}</td>
+                  <td>{{ patient.name }}</td>
+                  <td>{{ patient.age }}</td>
+                  <td>{{ patient.gender }}</td>
+                  <td>{{ patient.disease }}</td>
+                  <td>{{ patient.dateOfAdmission  }}</td>
+                  <td><button>Cancel</button><button>Active</button></td>
+                </tr>
+            }
+              </tbody>
+            </table>
+          </div>
+          
+          
+    </div>
+</div>
