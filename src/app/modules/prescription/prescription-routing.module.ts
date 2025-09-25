@@ -1,10 +1,14 @@
-import { Component, NgModule } from "@angular/core";
+import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { PrescriptionMakerComponent } from "./components/prescription-maker/prescription-maker.component";
+import { PrescriptionContainerComponent } from "./components/prescription-container/prescription-container.component";
 
 
 const routes: Routes = [
-    { path: ":userId", pathMatch:"full", component: PrescriptionMakerComponent },
+    {
+        path: ":userId", component: PrescriptionContainerComponent
+    },
+    { path: '**', redirectTo: 'not-found' }
+
 
 
 ];

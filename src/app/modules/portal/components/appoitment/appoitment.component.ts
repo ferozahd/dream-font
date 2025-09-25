@@ -7,6 +7,9 @@ import { Component, computed, Signal, signal } from '@angular/core';
   styleUrl: './appoitment.component.scss'
 })
 export class AppoitmentComponent {
+onSelectChange($event: Event) {
+throw new Error('Method not implemented.');
+}
 
     public status =signal<"PENDING"|"ACTIVE"|"ALL">("ALL");
     patients = signal<any>([

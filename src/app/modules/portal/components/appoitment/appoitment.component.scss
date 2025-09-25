@@ -15,7 +15,43 @@
     }
 
 
-
+    .custom-dropdown {
+        width: 250px; /* Adjust the width as needed */
+        margin: 10px;
+        font-family: Arial, sans-serif;
+      
+        label {
+          font-size: 1rem;
+          color: #333;
+          display: block;
+          margin-bottom: 8px;
+        }
+      
+        .dropdown-select {
+          width: 100%;
+          padding: 10px;
+          font-size: 1rem;
+          border-radius: 8px;
+          border: 1px solid #ddd;
+          background-color: #fff;
+          color: #333;
+          cursor: pointer;
+          transition: border-color 0.3s ease;
+        &:hover{
+            color: #fff;
+            background-color: #4B49AC;
+        }
+          &:focus {
+            border-color: #4B49AC; /* Highlight border on focus */
+          }
+      
+          option {
+            padding: 10px;
+            font-size: 1rem;
+            background-color: #fff;
+          }
+        }
+      }
 
     .patient-list-container {
       
@@ -55,11 +91,21 @@
               padding: 10px;
               text-align: left;
               border-bottom: 1px solid #ddd;
-            }
-      
+            } 
+            
             &:hover {
               background-color: #f1f1f1;
             }
+            .status{
+                border: solid 1px #584ef1;
+                border-radius: 5px;
+                padding: 3px;
+                background: #00af0c;
+                color: #ffffff;
+                font-weight: 600;
+                width: fit-content;
+            }
+          
           }
         }
       }

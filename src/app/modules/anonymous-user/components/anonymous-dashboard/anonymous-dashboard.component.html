@@ -1,0 +1,88 @@
+<div class="dashboard" [class.mobile]="isMobile">
+    <!-- Sidebar -->
+    <aside class="sidebar" [class.hidden]="isMobile && !showSidebar">
+      <header>
+        <h2>Your Tickets</h2>
+        <button class="create-btn" (click)="openModal(content)">+ Create Ticket</button>
+      </header>
+  
+      <ul class="ticket-list">
+        <li class="ticket"
+            *ngFor="let t of tickets"
+            [class.active]="t.id === selectedTicket.id"
+            (click)="selectTicket(t)">
+          <div class="title">{{t.title}}</div>
+          <div class="meta">
+            <span class="token">#{{t.token}}</span>
+            <span class="status" [ngClass]="t.status.toLowerCase()">{{t.status}}</span>
+          </div>
+        </li>
+      </ul>
+    </aside>
+  
+    <!-- Ticket Detail -->
+    <main class="ticket-detail" *ngIf="selectedTicket">
+      <header class="ticket-header">
+        <button class="menu-btn" *ngIf="isMobile" (click)="toggleSidebar()">☰</button>
+        <h3>{{selectedTicket.title}}</h3>
+        <div class="info">
+          Token: <code>#{{selectedTicket.token}}</code> |
+          <span class="status-chip" [ngClass]="selectedTicket.status.toLowerCase()">
+            {{selectedTicket.status}}
+          </span>
+        </div>
+      </header>
+  
+      <section class="chat-window">
+        <ng-container *ngFor="let msg of messages">
+          <!-- Normal message -->
+          <div class="chat-message" [ngClass]="msg.sender.toLowerCase()">
+            <div class="bubble" *ngIf="msg.text">
+              {{msg.text}}
+              <div class="time">{{msg.time}}</div>
+            </div>
+          </div>
+  
+          <!-- Upload request -->
+          <div class="upload-request" *ngIf="msg.uploadRequest">
+            <div class="label">
+              Agent requested: {{msg.uploadRequest.label}}
+              <span class="required" *ngIf="msg.uploadRequest.required">(Required)</span>
+            </div>
+            <div class="actions" *ngIf="msg.uploadRequest.status==='PENDING'">
+              <input type="file" [id]="'file-'+msg.id" hidden>
+              <label [for]="'file-'+msg.id" class="upload-btn">Choose File</label>
+              <button class="upload-submit">Upload</button>
+            </div>
+            <div class="status-text">Status: {{msg.uploadRequest.status}}</div>
+          </div>
+        </ng-container>
+      </section>
+  
+      <!-- Composer -->
+      <footer class="composer">
+        <textarea placeholder="Write your message..."></textarea>
+        <div class="composer-actions">
+          <button class="attach-btn">📎</button>
+          <button class="send-btn">Send</button>
+        </div>
+      </footer>
+    </main>
+  </div>
+  
+
+
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Add your ticket</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+    </div>
+    <div class="modal-body">
+        <input type="text" class="form-control" [(ngModel)]="ticket_name" name="userNameInput" placeholder="Enter your name">
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary" (click)="modal.close()">Close</button>
+      <button type="button" [disabled]="check_ticket_button_disablity()" (click)="createATicket()" class="btn btn-success ">Created</button>
+    </div>
+  </ng-template>

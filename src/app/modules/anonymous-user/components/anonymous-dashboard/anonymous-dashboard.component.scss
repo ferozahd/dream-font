@@ -1,0 +1,272 @@
+.dashboard {
+    display: flex;
+    height: 100vh;
+    background: #f8f9fa;
+    font-family: system-ui, sans-serif;
+
+    &.mobile {
+        flex-direction: column;
+    }
+}
+
+/* Sidebar */
+.sidebar {
+    width: 280px;
+    background: #fff;
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+
+    &.hidden {
+        display: none;
+    }
+
+    header {
+        padding: 1rem;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h2 {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .create-btn {
+            padding: 0.4rem 0.8rem;
+            border: none;
+            border-radius: 6px;
+            background: #1976d2;
+            color: #fff;
+            cursor: pointer;
+        }
+    }
+
+    .ticket-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        overflow-y: auto;
+
+        .ticket {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid #f1f1f1;
+            cursor: pointer;
+
+            &.active {
+                background: #e3f2fd;
+            }
+
+            .title {
+                font-weight: 500;
+                white-space: normal;
+                word-break: break-word;
+                overflow-wrap: anywhere;
+            }
+
+            .meta {
+                font-size: 0.8rem;
+                color: #666;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .status {
+                padding: 0.1rem 0.5rem;
+                border-radius: 4px;
+                font-size: 0.7rem;
+
+                &.open {
+                    background: #e0f7fa;
+                    color: #006064;
+                }
+
+                &.awaiting_upload {
+                    background: #fff8e1;
+                    color: #ff6f00;
+                }
+            }
+        }
+    }
+}
+
+/* Ticket detail */
+.ticket-detail {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    .ticket-header {
+        padding: 1rem;
+        border-bottom: 1px solid #ddd;
+        background: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .menu-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            margin-right: 1rem;
+            cursor: pointer;
+            display: none;
+        }
+
+        .status-chip {
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+
+            &.open {
+                background: #c8e6c9;
+                color: #2e7d32;
+            }
+
+            &.awaiting_upload {
+                background: #fff59d;
+                color: #f57f17;
+            }
+        }
+    }
+
+    .chat-window {
+        flex: 1;
+        padding: 1rem;
+        overflow-y: auto;
+        background: #fafafa;
+
+        .chat-message {
+            margin-bottom: 1rem;
+            display: flex;
+
+            .bubble {
+                max-width: 65%;
+                padding: 0.8rem;
+                border-radius: 12px;
+                font-size: 0.9rem;
+
+                .time {
+                    font-size: 0.7rem;
+                    color: #999;
+                    margin-top: 0.3rem;
+                    text-align: right;
+                }
+            }
+
+            &.agent {
+                justify-content: flex-start;
+
+                .bubble {
+                    background: #e1f5fe;
+                    border-top-left-radius: 0;
+                }
+            }
+
+            &.user {
+                justify-content: flex-end;
+
+                .bubble {
+                    background: #c8e6c9;
+                    border-top-right-radius: 0;
+                }
+            }
+        }
+
+        .upload-request {
+            background: #fff3e0;
+            padding: 1rem;
+            border: 1px solid #ffe0b2;
+            border-radius: 8px;
+            margin: 1rem 0;
+
+            .label {
+                font-weight: 500;
+                margin-bottom: 0.5rem;
+            }
+
+            .required {
+                color: #d32f2f;
+            }
+
+            .actions {
+                display: flex;
+                gap: 0.5rem;
+                margin-bottom: 0.5rem;
+
+                .upload-btn {
+                    background: #eee;
+                    padding: 0.4rem 0.8rem;
+                    border-radius: 6px;
+                    cursor: pointer;
+                }
+
+                .upload-submit {
+                    background: #1976d2;
+                    color: #fff;
+                    border: none;
+                    border-radius: 6px;
+                    padding: 0.4rem 0.8rem;
+                    cursor: pointer;
+                }
+            }
+
+            .status-text {
+                font-size: 0.8rem;
+                color: #555;
+            }
+        }
+    }
+
+    .composer {
+        border-top: 1px solid #ddd;
+        padding: 0.5rem;
+        background: #fff;
+
+        textarea {
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            resize: none;
+            padding: 0.6rem;
+            font-size: 0.9rem;
+        }
+
+        .composer-actions {
+            margin-top: 0.5rem;
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+
+            .attach-btn,
+            .send-btn {
+                border: none;
+                border-radius: 6px;
+                padding: 0.5rem 1rem;
+                cursor: pointer;
+            }
+
+            .attach-btn {
+                background: #eee;
+            }
+
+            .send-btn {
+                background: #1976d2;
+                color: #fff;
+            }
+        }
+    }
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        border-right: none;
+    }
+
+    .ticket-detail .ticket-header .menu-btn {
+        display: inline-block;
+    }
+}

@@ -1,0 +1,29 @@
+<div class="appointments-container">
+    <!-- Fixed Header with Toggle Buttons -->
+    <div class="custom-dropdown">
+         <select id="appointment-selection" class="dropdown-select" (change)="onSelectChange($event)">
+            <option value="ALL">All</option>
+            <option value="COMPLETED">Completed Appointments</option>
+          <option value="PEINDING">Pending Appointments</option>
+          <option value="TEST">Test Results</option>
+        </select>
+      </div>
+      
+      
+  
+    <div class="history-list">
+      <div *ngFor="let event of filteredHistory">
+        <div class="date-header mb-2">
+          <span *ngIf="isFirstEventOfDay(event)">{{ event.date | date: 'shortDate' }}</span>
+        </div>
+        <div class="history-item">
+              <div class="event-details">
+          <div><strong>{{ event.name }}</strong></div>
+          <div>{{ event.details }}</div>
+        </div>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+  

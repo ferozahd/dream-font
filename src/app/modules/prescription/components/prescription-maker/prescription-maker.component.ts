@@ -12,9 +12,7 @@ export class PrescriptionMakerComponent {
 
   private readonly route = inject(ActivatedRoute);
 
-  userId = this.route.snapshot.paramMap.get('userId') || '';
-  
-
+ 
   newMedicine: PrescribableMedicine = new PrescribableMedicine();
   prescriptionList: PrescribableMedicine[] = [];
 
@@ -29,11 +27,10 @@ export class PrescriptionMakerComponent {
     this.newMedicine = new PrescribableMedicine(); // reset
   }
 constructor(){
-  console.log("Calling from prescription maker")
-  console.log("user id {}",this.userId)
+ 
 }
   submitPrescription() {
-    console.log("user id {}",this.userId)
+ 
     console.log('Final Prescription:', this.prescriptionList);
     // TODO: Send to backend
   }

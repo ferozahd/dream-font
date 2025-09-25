@@ -1,0 +1,101 @@
+.appointments-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    .custom-dropdown {
+        width: 250px; /* Adjust the width as needed */
+        margin: 10px;
+        font-family: Arial, sans-serif;
+      
+        label {
+          font-size: 1rem;
+          color: #333;
+          display: block;
+          margin-bottom: 8px;
+        }
+      
+        .dropdown-select {
+          width: 100%;
+          padding: 10px;
+          font-size: 1rem;
+          border-radius: 8px;
+          border: 1px solid #ddd;
+          background-color: #fff;
+          color: #333;
+          cursor: pointer;
+          transition: border-color 0.3s ease;
+      
+          &:focus {
+            border-color: #007bff; /* Highlight border on focus */
+          }
+      
+          option {
+            padding: 10px;
+            font-size: 1rem;
+            background-color: #fff;
+          }
+        }
+      }
+      
+  }
+  
+  
+  .btn {
+   border:  solid #82acef 1px;
+        border-radius: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  
+    &.active {
+      background-color: #4B49AC;
+      color: #fff;
+    }
+  
+    &:hover {
+      background-color: #4B49AC;
+    }
+  }
+  
+  .history-list {
+    margin-top: 20px;
+    overflow-y: scroll; /* Enable scrolling */
+    -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer and Edge */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+  
+    &::-webkit-scrollbar {
+      display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+    }
+    .history-item {
+      background-color: #fff;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  
+      .date-header {
+        font-size: 0.9rem;
+        font-weight: bold;
+        color: #888;
+        margin-bottom: 8px;
+      }
+  
+      .event-details {
+        font-size: 1rem;
+        color: #333;
+  
+        strong {
+          color: #007bff;
+        }
+  
+        div {
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+  

@@ -1,9 +1,21 @@
 <div class="appoitment">
     
-    <div class="w-full  d-flex justify-content-sm-between">
+    <div class="w-full align-items-center  d-flex justify-content-between">
         <h4>Appoitment</h4>
-        <h4>Patient List (Total: {{ patientCount() }})</h4>
-        <ul class="d-flex appoitment-filter-btn">
+
+
+        <div class="custom-dropdown">
+            <select id="appointment-selection" class="dropdown-select" (change)="onSelectChange($event)">
+               <option value="ALL">Dhaka Medical College and Hospital </option>
+               <option value="COMPLETED">Square Hospital</option>
+             <option value="PEINDING">Bangabandhu Sheikh Mujib Medical University</option>
+             <option value="TEST">Labaid Specialized Hospital</option>
+           </select>
+         </div>
+      
+         
+
+        <ul class="d-flex appoitment-filter-btn align-items-center">
             <div (click)="change_filter_status('PENDING')" [className]="status()==='PENDING'?'active':''">Pending</div>
             <div (click)="change_filter_status('ACTIVE')" [className]="status()==='ACTIVE'?'active':''">Active</div>
             <div (click)="change_filter_status('ALL')" [className]="status()==='ALL'?'active':''">ALL</div>
@@ -35,7 +47,7 @@
                   <td>{{ patient.name }}</td>
                   <td>{{ patient.age }}</td>
                   <td>{{ patient.gender }}</td>
-                  <td>{{ patient.disease }}</td>
+                  <td><div class="status">{{ patient.disease }}</div></td>
                   <td>{{ patient.dateOfAdmission  }}</td>
                   <td><button>Cancel</button><button>Active</button></td>
                 </tr>

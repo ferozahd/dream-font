@@ -96,8 +96,8 @@
     <!-- partial:partials/_sidebar.html -->
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
       <ul class="nav">
-        <li [className]="is_active_group_selected('/dr/dashboard') ? 'nav-item active' : 'nav-item'">
-          <a class="nav-link" data-bs-toggle="collapse" href="#dash-board" aria-expanded="false"
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="collapse" href="#dash-board" aria-expanded="true"
             aria-controls="dash-board">
             <i class="icon-layout menu-icon"></i>
             <span class="menu-title">Dashboard</span>
@@ -105,10 +105,10 @@
           </a>
           <div class="collapse show " id="dash-board">
             <ul class="nav flex-column sub-menu">
-              <li  [className]="active_route_path()==='/dr/dashboard/kpi'?'nav-item active':'nav-item'" >
+              <li  [className]="active_route_path()==='/dr/dashboard/kpi'?'nav-item active-btn':'nav-item'" >
                  <a class="nav-link" routerLink="/dr/dashboard/kpi">Kpi</a>
                 </li>
-              <li  [className]="active_route_path()==='/dr/dashboard/appoitment'?'nav-item active':'nav-item'"> 
+              <li  [className]="active_route_path()==='/dr/dashboard/appoitment'?'nav-item active-btn':'nav-item'"> 
                 <a class="nav-link" routerLink="/dr/dashboard/appoitment">Appoitment</a>
               </li>
               <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
@@ -117,105 +117,9 @@
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" routerLink="/dr/prescription">
+          <a class="nav-link" routerLink="/dr/prescription" routerLinkActive="active-btn">
             <i class="icon-grid menu-icon"></i>
             <span class="menu-title">Prescription</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
-            aria-controls="ui-basic">
-            <i class="icon-layout menu-icon"></i>
-            <span class="menu-title">UI Elements</span>
-            <i class="menu-arrow"></i>
-          </a>
-          <div class="collapse" id="ui-basic">
-            <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-              <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a></li>
-              <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
-            </ul>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false"
-            aria-controls="form-elements">
-            <i class="icon-columns menu-icon"></i>
-            <span class="menu-title">Form elements</span>
-            <i class="menu-arrow"></i>
-          </a>
-          <div class="collapse" id="form-elements">
-            <ul class="nav flex-column sub-menu">
-              <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Basic Elements</a></li>
-            </ul>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
-            <i class="icon-bar-graph menu-icon"></i>
-            <span class="menu-title">Charts</span>
-            <i class="menu-arrow"></i>
-          </a>
-          <div class="collapse" id="charts">
-            <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">ChartJs</a></li>
-            </ul>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
-            <i class="icon-grid-2 menu-icon"></i>
-            <span class="menu-title">Tables</span>
-            <i class="menu-arrow"></i>
-          </a>
-          <div class="collapse" id="tables">
-            <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Basic table</a></li>
-            </ul>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
-            <i class="icon-contract menu-icon"></i>
-            <span class="menu-title">Icons</span>
-            <i class="menu-arrow"></i>
-          </a>
-          <div class="collapse" id="icons">
-            <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="pages/icons/mdi.html">Mdi icons</a></li>
-            </ul>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-            <i class="icon-head menu-icon"></i>
-            <span class="menu-title">User Pages</span>
-            <i class="menu-arrow"></i>
-          </a>
-          <div class="collapse" id="auth">
-            <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-              <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-            </ul>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="collapse" href="#error" aria-expanded="false" aria-controls="error">
-            <i class="icon-ban menu-icon"></i>
-            <span class="menu-title">Error pages</span>
-            <i class="menu-arrow"></i>
-          </a>
-          <div class="collapse" id="error">
-            <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
-              <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
-            </ul>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../../../docs/documentation.html">
-            <i class="icon-paper menu-icon"></i>
-            <span class="menu-title">Documentation</span>
           </a>
         </li>
       </ul>

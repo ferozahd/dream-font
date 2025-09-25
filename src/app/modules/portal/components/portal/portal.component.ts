@@ -1,5 +1,6 @@
 
-import { Component, signal } from '@angular/core';
+import { compileComponentClassMetadata } from '@angular/compiler';
+import { Component, computed, Signal, signal } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 
@@ -25,8 +26,14 @@ export class PortalComponent {
  
 
 
-  public is_active_group_selected(prefix: string): boolean {
-    return this.active_route_path().startsWith(prefix)
-  }
+  public active_group_selected: Signal<"dashboard" | "none"> = computed(() => {
+    if (this.active_route_path().startsWith("/dr/dashboard")) {
+      return "dashboard";
+    }
+    else {
+      return "none";
+    }
+  });
+  
 
 }

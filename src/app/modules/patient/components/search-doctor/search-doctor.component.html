@@ -1,0 +1,71 @@
+<div class="search-container">
+    <div class="search-header text-center mb-5">
+      <h3>Find a Doctor</h3>
+    </div>
+  
+    <div class="search-form">
+      <form (ngSubmit)="onSearch()" #searchForm="ngForm">
+        
+        <!-- Doctor's Name -->
+        <div class="form-group">
+          <label for="doctorName">Doctor's Name</label>
+          <input 
+            type="text" 
+            id="doctorName" 
+            class="form-control" 
+            placeholder="Enter doctor's name" 
+            [(ngModel)]="searchCriteria.name" 
+            name="name"
+          />
+        </div>
+  
+        <!-- Specialty -->
+        <div class="form-group">
+          <label for="specialty">Specialty</label>
+          <input 
+            type="text" 
+            id="specialty" 
+            class="form-control" 
+            placeholder="Enter specialty" 
+            [(ngModel)]="searchCriteria.specialty" 
+            name="specialty"
+          />
+        </div>
+  
+        <!-- Hospital Name -->
+        <div class="form-group">
+          <label for="hospital">Hospital Name</label>
+          <input 
+            type="text" 
+            id="hospital" 
+            class="form-control" 
+            placeholder="Enter hospital name" 
+            [(ngModel)]="searchCriteria.hospital" 
+            name="hospital"
+          />
+        </div>
+  
+        <!-- Location (City) -->
+        <div class="form-group">
+          <label for="location">Location (City)</label>
+          <input 
+            type="text" 
+            id="location" 
+            class="form-control" 
+            placeholder="Enter city name" 
+            [(ngModel)]="searchCriteria.location" 
+            name="location"
+          />
+        </div>
+  
+        <!-- Submit Button -->
+        <button 
+          type="submit" 
+          class="submit-btn btn-block mt-4" 
+          [disabled]="!searchForm.valid">
+          Search
+        </button>
+      </form>
+    </div>
+  </div>
+  

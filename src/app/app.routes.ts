@@ -15,5 +15,29 @@ export const routes: Routes = [
             (m) => m.PortalModule
           ),
       },
+      {
+        path:'dr-prescription',
+        loadChildren:()=> 
+          import('./modules/prescription/prescription.module').then(
+            (m) => m.PrescriptionModule
+          ),
+      },
+      {
+        path:'anonymous',
+        loadChildren:()=> 
+          import('./modules/anonymous-user/anonymous-user.module').then(
+            (m) => m.AnonymousUserModule
+          ),
+      },
+      {
+        path:'patient',
+        loadChildren:()=> 
+          import('./modules/patient/patient.module').then(
+            (m) => m.PatientModule
+          ),
+      },
+      {
+        path: '**', redirectTo: 'authentication'
+      }
      
 ];

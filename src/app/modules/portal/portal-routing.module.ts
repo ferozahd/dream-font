@@ -4,6 +4,7 @@ import { PortalComponent } from './components/portal/portal.component';
 import { PatientsListComponent } from './components/patients-list/patients-list.component';
 import { KpiReportsComponent } from './components/kpi-reports/kpi-reports.component';
 import { AppoitmentComponent } from './components/appoitment/appoitment.component';
+import { PrescriptionPortalComponent } from './components/prescription-portal/prescription-portal.component';
 
 const routes: Routes = [
   {
@@ -12,18 +13,13 @@ const routes: Routes = [
       { path: "dashboard/kpi", component: KpiReportsComponent },
       {path:"dashboard/appoitment",component:AppoitmentComponent},
       { path: "patients", component: PatientsListComponent },
+      {path:"prescription",component:PrescriptionPortalComponent},
       {
-        path:'dr',
-        loadChildren:()=> 
-          import('../prescription/prescription.module').then(
-            (m) => m.PrescriptionModule
-          ),
+        path: '**',pathMatch:'full', redirectTo: 'dashboard/kpi'
       }
     ]
   },
-{
-  path: '**', redirectTo: 'dashboard/kpi'
-}
+
   
 ];
 

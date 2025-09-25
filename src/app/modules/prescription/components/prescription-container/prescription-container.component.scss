@@ -1,0 +1,236 @@
+/* ==================================================================== */
+/* File: admin-sidebar.component.scss */
+/* Paste this into admin-sidebar.component.scss (or .scss file for the component) */
+
+// Variables
+$sidebar-width: 260px;
+$sidebar-bg: #4B49AC;
+; // deep navy
+$sidebar-foreground: #e6eef8;
+$sidebar-muted: #9aa8bd;
+$brand-accent: #2dd4bf; // teal
+$focus-outline: 3px solid rgba(45, 212, 191, 0.18);
+
+:host {
+    display: block;
+}
+
+.admin-root {
+    // The layout should not be responsive under 1280px; enforce a minimum width.
+    min-width: 1280px;
+    display: flex;
+    height: 100vh; // full height
+    background: #f7f9fc;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+.admin-sidebar::-webkit-scrollbar {
+    display: none; // Chrome, Safari
+}
+
+.admin-sidebar {
+    -ms-overflow-style: none; // IE/Edge
+    scrollbar-width: none; // Firefox
+}
+
+/* SIDEBAR */
+.admin-sidebar {
+    overflow: hidden;
+    width: $sidebar-width;
+    min-width: $sidebar-width; // prevent collapse
+    max-width: $sidebar-width;
+    background: $sidebar-bg;
+    color: $sidebar-foreground;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 2px 0 6px rgba(2, 6, 23, 0.12);
+    position: relative; // keep in flow
+    overflow: auto; // allow internal scroll if items exceed height
+}
+
+.sidebar-header {
+    padding: 20px 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    position: fixed;
+    flex: 0 0 72px;
+
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        .brand-logo {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .brand-name {
+            font-weight: 700;
+            letter-spacing: 0.2px;
+            color: $sidebar-foreground;
+            font-size: 16px;
+        }
+    }
+}
+
+.sidebar-nav {
+    flex: 1 1 auto;
+    overflow-y: auto; // scroll only here
+    -ms-overflow-style: none; // IE, Edge
+    scrollbar-width: none;
+    margin-top: 72px; // account for header height
+    margin-bottom: 60px; // account for footer height
+
+    &:-webkit-scrollbar {
+        display: none; // Chrome, Safari
+    }
+
+    ul {
+        list-style: none;
+        padding: 12px 8px;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .nav-item {
+        border-radius: 8px;
+        outline: none; // we'll add own focus
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: $sidebar-foreground;
+            padding: 10px 12px;
+            width: 100%;
+            box-sizing: border-box;
+            cursor: pointer;
+            user-select: none;
+            transition: background 120ms ease, transform 80ms ease;
+
+            .nav-icon {
+                width: 30px;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 16px;
+                color: $sidebar-muted;
+            }
+
+            .nav-text {
+                font-size: 14px;
+                color: $sidebar-foreground;
+                white-space: nowrap; // prevent wrap
+            }
+        }
+
+        // Active state
+        &.active {
+            .nav-link {
+                background: linear-gradient(90deg, rgba(45, 212, 191, 0.06), rgba(45, 212, 191, 0.02));
+                box-shadow: inset 3px 0 0 $brand-accent;
+            }
+        }
+
+        // Hover + focus
+        &:not(.active) {
+            .nav-link:hover {
+                background: rgba(255, 255, 255, 0.02);
+                transform: translateY(-1px);
+            }
+
+            &:focus-visible {
+                .nav-link {
+                    box-shadow: $focus-outline;
+                }
+            }
+        }
+    }
+}
+
+.sidebar-footer {
+    padding: 14px 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    position: fixed;
+    bottom: 0;
+    flex: 0 0 60px; // fixed height
+
+    .user-mini {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: cover;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .user-meta {
+            .user-name {
+                font-weight: 600;
+                font-size: 13px;
+                color: $sidebar-foreground;
+            }
+
+            .user-role {
+                font-size: 12px;
+                color: $sidebar-muted;
+            }
+        }
+    }
+}
+
+/* MAIN AREA */
+.admin-main {
+    flex: 1 1 auto;
+    min-height: 0; // let it shrink properly in flexbox
+    overflow: auto;
+    padding: 24px;
+}
+
+.main-placeholder {
+    border: 2px dashed rgba(20, 36, 60, 0.06);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280;
+}
+
+/* Accessibility & Keyboard behaviour: Make nav-item focusable and visually clear */
+.nav-item[tabindex] {
+    &:focus {
+        outline: none;
+
+        .nav-link {
+            box-shadow: $focus-outline;
+        }
+    }
+}
+
+/* Prevent collapse or hiding: explicit rules to avoid any responsive helpers */
+@media (max-width: 1279px) {
+
+    /* We intentionally avoid making layout responsive. If viewport < 1280px,
+     keep behavior consistent: show horizontal scrollbar on the body. */
+    .admin-root {
+        min-width: 1280px; // ensures horizontal scrollbar appears
+    }
+}
+
+/* Small utility: ensure long nav text truncates cleanly inside fixed width sidebar */
+.nav-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* End of SCSS */

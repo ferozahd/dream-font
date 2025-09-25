@@ -1,0 +1,43 @@
+<div class="patient-container d-flex flex-column">
+
+    <!-- Top Bar -->
+    <header class="topbar shadow-sm">
+        <div class="topbar-title">Patient Module</div>
+        <div class="topbar-actions">
+            <button class="icon-btn">
+                <i class="bi bi-bell"></i>
+            </button>
+            <button class="icon-btn">
+                <i class="bi bi-gear"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="content overflow-auto">
+        <router-outlet></router-outlet>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav shadow-lg">
+        <a routerLink="/patient/search-doctor" routerLinkActive="active">
+            <i class="bi bi-binoculars"></i>
+            <span>Search</span>
+        </a>
+
+        <a routerLink="/patient/medical-journey" routerLinkActive="active">
+            <i class="bi bi-perplexity"></i>
+            <span>Perplexity</span>
+        </a>
+
+        <a routerLink="/patient/history" routerLinkActive="active">
+            <i class="bi bi-clock-history"></i>
+            <span>History</span>
+        </a>
+        <a routerLink="/patient/profile" routerLinkActive="active">
+            <i class="bi bi-person"></i>
+            <span>Profile</span>
+        </a>
+    </nav>
+
+</div>

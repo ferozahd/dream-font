@@ -1,9 +1,17 @@
 .collapse {
     margin-bottom: 5px;
-    .active{
-    border: solid #fff 1px;
-    border-radius: 10px;
-    margin-right: 5px;
-    margin-left: 5px;
-}
+
+    .active-btn {
+        border: solid #fff 1px;
+        border-radius: 10px;
+        margin-right: 5px;
+        // padding-left: 5px;
+    }
+
+    .nav-item {
+
+        &:before {
+            content: none;
+        }
+    }
 }
