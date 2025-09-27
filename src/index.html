@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Dream</title>
@@ -11,172 +12,20 @@
   <link rel="stylesheet" href="assets/vendors/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
-    body{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh; /* Ensure full viewport height */
-  box-sizing: border-box; /* To include padding in the height calculation */
-  overflow-y: auto; /* Allow scrolling when content exceeds height */
-}
+    body {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
   </style>
 </head>
 
-<body >
+<body>
   <app-root></app-root>
-  <script src="assets/vendors/js/vendor.bundle.base.js"></script>
-  <script type="text/javascript"> 
-    'use strict';
-
-    document.addEventListener('DOMContentLoaded', function () {
-      var body = document.querySelector('body');
-      var contentWrapper = document.querySelector('.content-wrapper');
-      var scroller = document.querySelector('.container-scroller');
-      var footer = document.querySelector('.footer');
-      var sidebar = document.querySelector('.sidebar');
-
-      // Add active class to nav-link based on URL dynamically
-      function addActiveClass(element) {
-        var current = location.pathname.split("/").slice(-1)[0].replace(/^\/|\/$/g, '');
-
-        if (current === "") {
-          // For root URL
-          if (element.getAttribute('href').indexOf("index.html") !== -1) {
-            element.closest('.nav-item').classList.add('active');
-            if (element.closest('.sub-menu')) {
-              element.closest('.collapse').classList.add('show');
-              element.classList.add('active');
-            }
-          }
-        } else {
-          // For other URLs
-          if (element.getAttribute('href').indexOf(current) !== -1) {
-            element.closest('.nav-item').classList.add('active');
-            if (element.closest('.sub-menu')) {
-              element.closest('.collapse').classList.add('show');
-              element.classList.add('active');
-            }
-            if (element.closest('.submenu-item')) {
-              element.classList.add('active');
-            }
-          }
-        }
-      }
-
-      var navLinks = sidebar.querySelectorAll('.nav li a');
-      navLinks.forEach(function (link) {
-        addActiveClass(link);
-      });
-
-      var horizontalMenuLinks = document.querySelectorAll('.horizontal-menu .nav li a');
-      horizontalMenuLinks.forEach(function (link) {
-        addActiveClass(link);
-      });
-
-      // Close other submenu in sidebar on opening any
-      sidebar.addEventListener('show.bs.collapse', function (e) {
-        var collapseElements = sidebar.querySelectorAll('.collapse.show');
-        collapseElements.forEach(function (collapse) {
-          if (collapse !== e.target) {
-            var bootstrapCollapse = new bootstrap.Collapse(collapse, { toggle: false });
-            bootstrapCollapse.hide();
-          }
-        });
-      });
-
-      // Change sidebar and content-wrapper height
-      applyStyles();
-
-      function applyStyles() {
-        // Applying perfect scrollbar
-        if (!body.classList.contains("rtl")) {
-          if (document.querySelector('.settings-panel .tab-content .tab-pane.scroll-wrapper')) {
-            new PerfectScrollbar('.settings-panel .tab-content .tab-pane.scroll-wrapper');
-          }
-          if (document.querySelector('.chats')) {
-            new PerfectScrollbar('.chats');
-          }
-          if (body.classList.contains("sidebar-fixed") && document.querySelector('#sidebar')) {
-            new PerfectScrollbar('#sidebar .nav');
-          }
-        }
-      }
-
-      var minimizeButton = document.querySelector('[data-toggle="minimize"]');
-      if (minimizeButton) {
-        minimizeButton.addEventListener('click', function () {
-          if (body.classList.contains('sidebar-toggle-display') || body.classList.contains('sidebar-absolute')) {
-            body.classList.toggle('sidebar-hidden');
-          } else {
-            body.classList.toggle('sidebar-icon-only');
-          }
-        });
-      }
-
-      // Checkbox and radio button styles
-      var formCheckLabels = document.querySelectorAll(".form-check label, .form-radio label");
-      formCheckLabels.forEach(function (label) {
-        var inputHelper = document.createElement('i');
-        inputHelper.classList.add('input-helper');
-        label.appendChild(inputHelper);
-      });
-
-      // Horizontal menu in mobile
-      var horizontalMenuToggle = document.querySelector('[data-toggle="horizontal-menu-toggle"]');
-      if (horizontalMenuToggle) {
-        horizontalMenuToggle.addEventListener('click', function () {
-          document.querySelector(".horizontal-menu .bottom-navbar").classList.toggle("header-toggled");
-        });
-      }
-
-      // Horizontal menu navigation in mobile
-      var navItemClicked = document.querySelectorAll('.horizontal-menu .page-navigation >.nav-item');
-      navItemClicked.forEach(function (item) {
-        item.addEventListener('click', function (event) {
-          if (window.matchMedia('(max-width: 991px)').matches) {
-            if (!item.classList.contains('show-submenu')) {
-              navItemClicked.forEach(function (nav) {
-                nav.classList.remove('show-submenu');
-              });
-            }
-            item.classList.toggle('show-submenu');
-          }
-        });
-      });
-
-      // Scroll functionality
-      window.addEventListener('scroll', function () {
-        if (window.matchMedia('(min-width: 992px)').matches) {
-          var header = document.querySelector('.horizontal-menu');
-          if (window.scrollY >= 70) {
-            header.classList.add('fixed-on-scroll');
-          } else {
-            header.classList.remove('fixed-on-scroll');
-          }
-        }
-      });
-
-      // Focus input when clicking on search icon
-      var navbarSearchIcon = document.getElementById('navbar-search-icon');
-      if (navbarSearchIcon) {
-        navbarSearchIcon.addEventListener('click', function () {
-          document.getElementById("navbar-search-input").focus();
-        });
-      }
-
-      // Initialize Bootstrap popovers and tooltips
-      var popoverTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="popover"]'));
-      var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-        return new bootstrap.Popover(popoverTriggerEl);
-      });
-
-      var tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl);
-      });
-    });
-
-  </script> 
 </body>
+
 </html>

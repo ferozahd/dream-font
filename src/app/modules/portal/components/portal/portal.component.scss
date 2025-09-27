@@ -8,10 +8,31 @@
         // padding-left: 5px;
     }
 
+
     .nav-item {
 
         &:before {
             content: none;
         }
     }
+}
+
+
+#sidebar{
+    .menu-arrow {
+        transition: transform 0.3s ease;
+        &.rotated {
+          transform: rotate(90deg);
+        }
+      }
+      
+
+      .active-btn-group{
+        background-color: #4B49AC;
+    border-radius: 8px;
+
+        .menu-title{
+            color: white;
+        }
+      }
 }

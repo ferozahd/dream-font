@@ -1,1 +1,80 @@
-<p>prescription-portal works!</p>
+<div class="calendar-container">
+
+
+  <div class="custom-dropdown">
+    <select id="appointment-selection" class="dropdown-select" (change)="onSelectChange($event)">
+      <option value="ALL">Dhaka Medical College and Hospital </option>
+      <option value="COMPLETED">Square Hospital</option>
+      <option value="PEINDING">Bangabandhu Sheikh Mujib Medical University</option>
+      <option value="TEST">Labaid Specialized Hospital</option>
+    </select>
+  </div>
+  <div >
+    <!-- <ckeditor [(ngModel)]="noticeContent"></ckeditor> --> 
+  </div>
+  <div class="notice">
+    নোটিশ
+    সকল সম্মানিত রোগী এবং শুভাকাঙ্ক্ষীদের জানানো যাচ্ছে যে, ডাঃ মোঃ আব্দুর রহিম-এর বর্তমান কর্মকাল ও উপলব্ধতা নিম্নরূপ:
+    শনি, সোম, বুধ সন্ধ্যা ৬:০০ টা - রাত ৯:০০ টা
+
+    বিশেষ দ্রষ্টব্য:
+    ১. অ্যাপয়েন্টমেন্টের জন্য অনুগ্রহ করে অগ্রিম বুকিং করুন। বুকিং ছাড়া রোগী দেখা সম্ভব নাও হতে পারে।
+    ২. অপারগতা বা জরুরী অবস্থার কারণে ডাক্তার সাহেবের কর্মসময়ে পরিবর্তন আসতে পারে। পরিবর্তনের ক্ষেত্রে হাসপাতালের ডেস্ক
+    বা চেম্বারে যোগাযোগ করার জন্য অনুরোধ করা হচ্ছে।
+    ৩. শুধুমাত্র জরুরী প্রয়োজনে নিম্নোক্ত নম্বরে যোগাযোগ করা যেতে পারে।
+
+    যোগাযোগের জন্য:
+    ফোন: ০১৯৯৯-৯৯৯৯৯৯ (ইউনাইটেড হাসপাতাল) / ০১৭৭৭-৭৭৭৭৭৭ (চেম্বার সহকারী)
+    ইমেইল: dr.abdur.rahim&#64;email.com (শুধুমাত্র প্রশাসনিক কাজের জন্য)
+  </div>
+
+  <div class="calender">
+    <div class="calendar-header">
+      <h2>{{ monthData().month }} {{ monthData().year }}</h2>
+    </div>
+
+
+    <table class="calendar-table">
+      <thead>
+        <tr>
+          <th *ngFor="let day of daysOfWeek" class="day-header">
+            {{ day }}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for (week of monthData().weeksDay; track $index) {
+
+        <tr>
+          <ng-container *ngTemplateOutlet="dayTemplate; context: { week: week }"></ng-container>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+
+
+</div>
+
+
+
+
+<ng-template #dayTemplate let-week="week">
+
+  <ng-container *ngFor="let day of week; let i = index">
+
+    <td class="week-day">
+      <div routerLink="/dr-prescription">
+        <div class="date" *ngIf="day.date !== 0">{{ day.date }}</div>
+        <div class="event" *ngIf="day.date !== 0">
+          <span>{{ day.event }}</span>
+        </div>
+      </div>
+
+
+      <div class="date" *ngIf="day.date === 0"></div>
+    </td>
+  </ng-container>
+</ng-template>

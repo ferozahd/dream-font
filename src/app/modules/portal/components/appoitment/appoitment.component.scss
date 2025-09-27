@@ -107,6 +107,33 @@
             }
           
           }
+
+          .status-cancel{
+            border: solid #82acef 1px;
+            border-radius: 10px;
+            margin-right: 5px;
+            margin-left: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            // background-color: #ffa0a0;
+            i{
+                color: red;
+ 
+            }
+          } 
+              .status-active{
+            border: solid #82acef 1px;
+            border-radius: 10px;
+            margin-right: 5px;
+            margin-left: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            i{
+                color:green;
+          
+
+            }
+          }
         }
       }
       

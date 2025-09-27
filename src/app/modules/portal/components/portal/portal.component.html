@@ -96,34 +96,52 @@
     <!-- partial:partials/_sidebar.html -->
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
       <ul class="nav">
-        <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="collapse" href="#dash-board" aria-expanded="true"
-            aria-controls="dash-board">
-            <i class="icon-layout menu-icon"></i>
-            <span class="menu-title">Dashboard</span>
-            <i class="menu-arrow"></i>
+        @for (item of sidebar(); track $index) {
+        <li class="nav-item" [ngClass]="{'active-btn-group':item.active}">
+          @if(item.children&& item.children.length>0) {
+          <a 
+            class="nav-link d-flex justify-content-between align-items-center" 
+            (click)="toggleCollapse(item.name)">
+            <div>
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">{{item.name}}</span>
+            </div>
+            @if(item.children && item.children.length > 0) {
+            <i class="menu-arrow" [ngClass]="{'rotated': item.collapsed}"></i>
+            }
           </a>
-          <div class="collapse show " id="dash-board">
+        }@else {
+          <a 
+          routerLink={{item.route}}
+          class="nav-link d-flex justify-content-between align-items-center" 
+          (click)="toggleCollapse(item.name)">
+          <div>
+            <i class="icon-layout menu-icon"></i>
+            <span class="menu-title">{{item.name}}</span>
+          </div>
+          </a>
+        }
+
+
+          @if(item.children && item.children.length > 0) {
+
+          <div [ngbCollapse]="!item.collapsed" >
             <ul class="nav flex-column sub-menu">
-              <li  [className]="active_route_path()==='/dr/dashboard/kpi'?'nav-item active-btn':'nav-item'" >
-                 <a class="nav-link" routerLink="/dr/dashboard/kpi">Kpi</a>
-                </li>
-              <li  [className]="active_route_path()==='/dr/dashboard/appoitment'?'nav-item active-btn':'nav-item'"> 
-                <a class="nav-link" routerLink="/dr/dashboard/appoitment">Appoitment</a>
+              @for (sub_item of item.children; track $index) {
+              <li [ngClass]="{'active-btn':sub_item.active} "  class="nav-item">
+                <a class="nav-link" routerLink={{sub_item.route}}>{{sub_item.name}}</a>
               </li>
-              <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+            }
             </ul>
           </div>
+        }
         </li>
-        
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/dr/prescription" routerLinkActive="active-btn">
-            <i class="icon-grid menu-icon"></i>
-            <span class="menu-title">Prescription</span>
-          </a>
-        </li>
+      }
+
       </ul>
     </nav>
+    
+    
     <!-- partial -->
     <div class="main-panel">
       <div class="content-wrapper">

@@ -1,0 +1,104 @@
+/* Main calendar container */
+.calendar-container {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+
+
+  .custom-dropdown {
+    width: 400px; /* Adjust the width as needed */
+    margin: 10px;
+    font-family: Arial, sans-serif;
+   
+    label {
+      font-size: 1rem;
+      color: #333;
+      display: block;
+      margin-bottom: 8px;
+    }
+  
+    .dropdown-select {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      background-color: #fff;
+      color: #333;
+      cursor: pointer;
+      transition: border-color 0.3s ease;
+    &:hover{
+        color: #fff;
+        background-color: #4B49AC;
+    }
+      &:focus {
+        border-color: #4B49AC; /* Highlight border on focus */
+      }
+  
+      option {
+        padding: 10px;
+        font-size: 1rem;
+        background-color: #fff;
+      }
+    }
+  }
+
+.calender {
+ 
+    /* Calendar header */
+  .calendar-header {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+
+  .calendar-table{
+    width: 100%;
+  }
+  .day-header{
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  .week-day{
+    padding: 10px;
+    text-align: center;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover {
+      background-color: #f0f0f0;
+    }
+
+
+    .event {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #007bff;
+    }
+
+    .date{
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+  .empty-space {
+    background-color: #f9f9f9;
+    border: 1px solid #f9f9f9;
+  }
+}
+
+  
+}
+
+ 
+ 
+ 
+
+
+/* Empty space for days before the start of the month */
+
