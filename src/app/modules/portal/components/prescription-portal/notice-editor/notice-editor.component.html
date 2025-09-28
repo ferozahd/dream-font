@@ -1,0 +1,22 @@
+<div class="editor-container">
+    <!-- Toolbar with buttons -->
+    <div class="toolbar">
+      <button (click)="applyBold()">Bold</button>
+      <button (click)="applyItalic()">Italic</button>
+      <button (click)="applyBulletList()">Bullet List</button>
+      <button (click)="insertTable()">Insert Table</button>
+    </div>
+  
+    <!-- Content editable area -->
+    <div class="editor"
+     contenteditable="true"
+    (keyup)="updateContent($event)"
+    (keydown.tab)="applyTab()"
+
+    >
+
+    
+    </div>
+    <button (click)="sendData()">Send Data to Parent</button>
+</div>
+  
